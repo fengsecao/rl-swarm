@@ -646,28 +646,6 @@ else
 fi
 
 
-
-HUGGINGFACE_ACCESS_TOKEN="None"
-
-if [ ! -f "$DEFAULT_IDENTITY_PATH" ]; then
-    echo -e "\n${CYAN}Would you like to push models you train in the RL swarm to the Hugging Face Hub? [y/N]${NC}"
-    echo -n "> "
-    read yn
-    yn=${yn:-N}
-    case "$yn" in
-    [Yy]*)
-        read -p "Enter your Hugging Face access token: " HUGGINGFACE_ACCESS_TOKEN
-        ;;
-    [Nn]*)
-        HUGGINGFACE_ACCESS_TOKEN="None"
-        ;;
-    *)
-        echo -e "${YELLOW}>>> No answer was given, so NO models will be pushed to the Hugging Face Hub.${NC}"
-        HUGGINGFACE_ACCESS_TOKEN="None"
-        ;;
-    esac
-fi
-
 echo -e "\n${CYAN}${BOLD}This is your preferred ENV for this training session :\n${NC}"
 
 print_env() {
